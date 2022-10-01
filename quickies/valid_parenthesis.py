@@ -1,15 +1,16 @@
 class Solution:
+    # Solution by Nandan 18 : https://github.com/Nandan-18
 
-    def isValid(self, s: str) -> bool:
+    def is_valid(self, word: str) -> bool:
 
         stack = []
-        dict1 = {"]": "[", "}": "{", ")": "("}    # key:value pairs
+        bracket_mapper = {"]": "[", "}": "{", ")": "("}    # key:value pairs
 
-        for i in s:
-            if i in dict1.values():
-                stack.append(i)
-            elif i in dict1.keys():
-                if stack == [] or dict1[i] != stack.pop():
+        for char in word:
+            if char in bracket_mapper.values():
+                stack.append(char)
+            elif char in bracket_mapper:
+                if stack == [] or bracket_mapper[char] != stack.pop():
                     return False
             else:
                 return False
